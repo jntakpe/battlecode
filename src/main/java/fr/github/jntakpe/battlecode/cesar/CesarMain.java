@@ -16,7 +16,7 @@ public class CesarMain {
             "TUZF: GEQ YAPGXA FIQZFK EUJ FA PQOAPQ FTUE AZQ !"
     };
 
-    public static final int[] CESAR_NB = {1, -3, 404};
+    public static final int[] CESAR_NB = {1, -3, 402};
 
     public static void main(String[] args) {
         for (int i = 0; i < 3; i++) {
