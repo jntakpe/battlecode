@@ -16,14 +16,23 @@ public class DodoMain {
 
     public static final String[] dodoKeys = {"po", "pa", "pe", "pi", "to", "ta", "te", "ti", "ko", "ka"};
 
+    public static final String[] ENONCES = {
+            "papopeto",
+            "papetedotidepetadokadopatekadatatidopipidopetidetotidatitopidotepetadapipeta",
+            "papetedokokopadotidepetadapatadepekodepadekadopatekadotatipipidopetidetotidatitopidotepetadotokadetadekodepodetotidapipetadopepadekopedopipokadakopopedatatopipidotitedopo"
+    };
+
     public static void main(String[] args) throws Exception{
-        List<String> parsed = parse("papetedokokopadotidepetadapatadepekodepadekadopatekadotatipipidopetidetotidatitopidotepetadotokadetadekodepodetotidapipetadopepadekopedopipokadakopopedatatopipidotitedopo");
-        List<DodoLang> corrTable = initCorrTable();
-        String expr = parsed.stream()
-                .map(ope -> corrTable.get(corrTable.indexOf(new DodoLang(ope, null))))
-                .map(DodoLang::getOperation)
-                .collect(Collectors.joining());
-        System.out.println(Double.valueOf(eval(expr)).intValue());
+        for (String enonce : ENONCES) {
+            List<String> parsed = parse(enonce);
+            List<DodoLang> corrTable = initCorrTable();
+            String expr = parsed.stream()
+                    .map(ope -> corrTable.get(corrTable.indexOf(new DodoLang(ope, null))))
+                    .map(DodoLang::getOperation)
+                    .collect(Collectors.joining());
+            System.out.println(eval(expr).intValue());
+
+        }
     }
 
     public static List<DodoLang> initCorrTable() {
@@ -53,9 +62,9 @@ public class DodoMain {
         return parsed;
     }
 
-    public static double eval(String expr) throws ScriptException {
+    public static Number eval(String expr) throws ScriptException {
         ScriptEngine engine = new ScriptEngineManager().getEngineByName("js");
-        return (double) engine.eval(expr);
+        return (Number) engine.eval(expr);
     }
 
 

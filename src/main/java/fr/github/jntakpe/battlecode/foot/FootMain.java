@@ -5,12 +5,15 @@ package fr.github.jntakpe.battlecode.foot;
  */
 public class FootMain {
 
+    public static final int[] ENONCE_X = {35, 15, 1};
+
+    public static final int[] ENONCE_Y = {65, 30, 120};
+
+    public static final int[] ENONCE_Z = {35, 10, 2};
+
     public static void main(String[] args) {
-        int[] xTab = {35, 15, 1};
-        int[] yTab = {65, 30, 120};
-        int[] zTab = {35, 10, 2};
         for (int i = 0; i < 3; i++) {
-            printScore(ourGoals(xTab[i]), theirsGoals(yTab[i], zTab[i]));
+            printScore(ourGoals(ENONCE_X[i]), theirsGoals(ENONCE_Y[i], ENONCE_Z[i]));
         }
     }
 
@@ -29,8 +32,6 @@ public class FootMain {
     private static void printScore(int ourGoals, int theirGoals) {
         System.out.println(ourGoals + "-" + theirGoals);
     }
-
-
 
 
 }

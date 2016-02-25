@@ -10,6 +10,8 @@ public class CavalierMain {
 
     private Case currentCase = new Case(0, 0);
 
+
+
     public static void main(String[] args) {
         Cavalier cavalier = new Cavalier(initPlateau(1000, 1500));
         try {

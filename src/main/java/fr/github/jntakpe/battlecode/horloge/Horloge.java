@@ -10,10 +10,16 @@ public class Horloge {
 
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH'h'mm");
 
+    public static final String[] ENONCES_DEBUT = {"00h00", "09h59", "15h00"};
+
+    public static final String[] ENONCES_FIN = {"01h00", "23h30", "14h58"};
+
     public static void main(String[] args) {
-        LocalTime start = parse("00h00");
-        LocalTime end = parse("01h00");
-        System.out.println(total(start, end));
+        for (int i = 0; i < 3; i++) {
+            LocalTime start = parse(ENONCES_DEBUT[i]);
+            LocalTime end = parse(ENONCES_FIN[i]);
+            System.out.println(total(start, end));
+        }
     }
 
     private static int sum(LocalTime localTime) {
@@ -26,10 +32,11 @@ public class Horloge {
 
     private static int total(LocalTime start, LocalTime end) {
         int total = 0;
-        while (start.isBefore(end)) {
+        while (!start.equals(end)) {
             total += sum(start);
             start = start.plusMinutes(1L);
         }
         return total;
     }
+
 }
